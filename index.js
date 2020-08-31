@@ -1,6 +1,10 @@
 const { MongoClient, ObjectId, BSONType } = require("mongodb");
 let params;
-try { params = require("./params.json"); } catch { params = {}; }
+try {
+  params = require("./params.json");
+} catch {
+  params = {};
+}
 const text = require("./text.json");
 
 const Telegraf = require("telegraf");
@@ -9,7 +13,8 @@ const Markup = require("telegraf/markup");
 const { Stage, session } = Telegraf;
 const SceneGen = require("./Scenes");
 
-const { TOKEN, KEY } = params;
+const TOKEN = process.env.TOKEN || params.TOKEN;
+const KEY = process.env.KEY || params.KEY;
 const bot = new Telegraf(TOKEN);
 
 const botName = "Мэд";
