@@ -1,5 +1,6 @@
 const { MongoClient, ObjectId, BSONType } = require("mongodb");
-const params = require("./params.json");
+let params;
+try { params = require("./params.json"); } catch { params = {}; }
 const text = require("./text.json");
 
 const Telegraf = require("telegraf");
